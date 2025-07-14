@@ -46,3 +46,28 @@ class User extends Authenticatable
         ];
     }
 }
+
+public function assets()
+{
+    return $this->hasMany(Asset::class);
+}
+
+public function liabilities()
+{
+    return $this->hasMany(Liability::class);
+}
+
+public function getTotalAssetsAttribute()
+{
+    return $this->assets()->sum('amount');
+}
+
+public function getTotalLiabilitiesAttribute()
+{
+    return $this->liabilities()->sum('amount');
+}
+
+public function getNetWorthAttribute()
+{
+    return $this->total_assets - $this->total_liabilities;
+}
