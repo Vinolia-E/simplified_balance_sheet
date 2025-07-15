@@ -45,7 +45,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-}
+
 
 public function assets()
 {
@@ -70,4 +70,6 @@ public function getTotalLiabilitiesAttribute()
 public function getNetWorthAttribute()
 {
     return $this->total_assets - $this->total_liabilities;
+}
+
 }
